@@ -1,0 +1,11 @@
+.header {
+    min-height: 64px;
+}
+
+.header .nav-link {
+    border-style: solid;
+
+    /* vertical alignment */
+    position: relative;
+    top: 10px;
+}

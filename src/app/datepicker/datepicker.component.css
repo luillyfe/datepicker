@@ -1,0 +1,21 @@
+.list-group-item:nth-child(2)::after {
+    content: "\003e";
+    margin-left: 65px;
+}
+
+.list-group-item:nth-child(2)::before {
+    content: "\003c";
+    margin-right: 65px;
+}
+
+.table td {
+    padding: .75rem .5rem;
+}
+
+.table-responsive::after {
+    content: "";
+    border: 1px solid;
+    border-right-width: 130px;
+    border-left-width: 130px;
+    border-color: #007bff;
+}
