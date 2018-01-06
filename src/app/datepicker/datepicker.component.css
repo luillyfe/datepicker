@@ -12,10 +12,16 @@
     padding: .75rem .5rem;
 }
 
-.table-responsive::after {
-    content: "";
-    border: 1px solid;
-    border-right-width: 130px;
-    border-left-width: 130px;
+.table {
+    border-bottom: 20px solid;
     border-color: #007bff;
 }
+
+/*.table-responsive::after {
+    content: "";
+    border: 1px solid;
+    !* TODO: Width should be calculate at runtime *!
+    border-right-width: 20vh;
+    border-left-width: 20vh;
+    border-color: #007bff;
+}*/
