@@ -1,4 +1,4 @@
-<div class="date-picker container mt-5">
+<div class="date-picker container mt-5" [class.d-none]="hiddenDatePicker">
     <div class="date-input input-group mb-3">
         <div class="input-group-prepend rounded-left">
             <span class="input-group-text" type="date" id="mail-addon">@</span>
@@ -6,18 +6,19 @@
         <input type="text" class="form-control" placeholder="the day you were born" aria-label="Birthday" aria-describedby="the-day-you-were-born"
             [value]="birthday | date" (click)="hiddenDateSelector = false">
     </div>
-    <div class="date-selector" [class.d-none]="hiddenDateSelector">
+    <div class="date-selector" [class.invisible]="hiddenDateSelector">
         <div class="list-group">
-          <a href="#" class="list-group-item list-group-item-action text-center active">{{ today | date:'MM/dd/y' }}</a>
-          <a href="#" class="list-group-item list-group-item-action text-center">{{ today | date:'MMMM' }}</a>
+          <button class="list-group-item list-group-item-action text-center active"
+              (click)="hiddenYearSelector = false">{{ birthday | date:'yyyy' }}</button>
+          <button class="list-group-item list-group-item-action text-center"
+              (click)="hiddenMonthSelector = false">{{ birthday | date:'MMMM' }}</button>
         </div>
         <div class="table-responsive">
             <table class="table">
                 <tbody>
                     <tr *ngFor="let week of month">
-                        <!-- TODO: On expession for table-disable class should be 0 calculate -->
-                        <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != 0">
-                            <button [disabled]="day.getMonth() != 0" [value]="day" (click)="birthday = day; showOff()">
+                        <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != birthday.getMonth()">
+                            <button [disabled]="day.getMonth() != birthday.getMonth()" [value]="day" (click)="datePicker(day)">
                               {{ day | date:'dd' }}</button>
                         </td>
                     </tr>
@@ -26,3 +27,11 @@
         </div>
     </div>
 </div>
+
+<ul class="month-picker list-group" [class.d-none]="hiddenMonthSelector">
+  <li class="list-group-item" *ngFor="let month of year" (click)="monthPicker(month)">{{ month | date:'MMMM' }}</li>
+</ul>
+
+<ul class="month-picker list-group" [class.d-none]="hiddenYearSelector">
+  <li class="list-group-item" *ngFor="let year of years" (click)="yearPicker(year)">{{ year | date:'yyyy' }}</li>
+</ul>

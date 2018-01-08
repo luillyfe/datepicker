@@ -1,11 +1,16 @@
-.list-group-item:nth-child(2)::after {
+.date-selector .list-group-item:nth-child(2)::after {
     content: "\003e";
-    margin-left: 65px;
+    margin-left: 60px;
 }
 
-.list-group-item:nth-child(2)::before {
+.date-selector .list-group-item:nth-child(2)::before {
     content: "\003c";
-    margin-right: 65px;
+    margin-right: 60px;
+}
+
+.list-group button {
+    border: 1px solid rgba(0,0,0,.125);
+    outline-color: white;
 }
 
 .table {
@@ -25,6 +30,8 @@
 .date-selector {
     margin-top: -26px;
     margin-left: 15px;
+
+    transition: visibility 0.2s ease-in-out 0.2s;
 }
 
 .input-group-prepend {
@@ -37,13 +44,29 @@
     top: 17%;
 }
 
-button {
+.table button {
     padding: .75rem .4rem;
     border-width: 0;
     background-color: transparent;
 }
 
-button:focus {
+.table button:focus {
     background-color: #007bff;
     color: white;
+}
+
+.month-picker, .year-picker {
+    position: fixed;
+    top: 10%;
+    left: calc(50% - 62px);
+
+    min-width: 125px;
+}
+
+.month-picker {
+    z-index: 2;
+}
+
+.year-picker {
+    z-index: 3;
 }
