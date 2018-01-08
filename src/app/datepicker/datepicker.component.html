@@ -1,26 +1,28 @@
-<div class="container mt-5">
-    <div class="input-group mb-3 d-none d-md-inline-flex">
+<div class="date-picker container mt-5">
+    <div class="date-input input-group mb-3">
         <div class="input-group-prepend rounded-left">
             <span class="input-group-text" type="date" id="mail-addon">@</span>
         </div>
         <input type="text" class="form-control" placeholder="the day you were born" aria-label="Birthday" aria-describedby="the-day-you-were-born"
-            [value]="birthday | date">
+            [value]="birthday | date" (click)="hiddenSelector = false">
     </div>
-    <div class="list-group d-md-none">
-      <a href="#" class="list-group-item list-group-item-action text-center active">{{ today | date:'MM/dd/y' }}</a>
-      <a href="#" class="list-group-item list-group-item-action text-center">{{ today | date:'MMMM' }}</a>
-    </div>
-    <div class="table-responsive d-md-none">
-        <table class="table">
-            <tbody>
-                <tr *ngFor="let week of month">
-                    <!-- TODO: On expession for table-disable class should be 0 calculate -->
-                    <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != 0">
-                        <button [disabled]="day.getMonth() != 0" [value]="day" (click)="birthday = day">
-                          {{ day | date:'dd' }}</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="date-selector" [class.d-none]="hiddenSelector">
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action text-center active">{{ today | date:'MM/dd/y' }}</a>
+          <a href="#" class="list-group-item list-group-item-action text-center">{{ today | date:'MMMM' }}</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    <tr *ngFor="let week of month">
+                        <!-- TODO: On expession for table-disable class should be 0 calculate -->
+                        <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != 0">
+                            <button [disabled]="day.getMonth() != 0" [value]="day" (click)="onClick(day)">
+                              {{ day | date:'dd' }}</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
