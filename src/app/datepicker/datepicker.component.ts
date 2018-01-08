@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DatepickerService} from './datepicker.service';
 
 @Component({
   selector: 'app-datepicker',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datepicker.component.css']
 })
 export class DatepickerComponent implements OnInit {
-    today: number;
+    today: Date;
+    month: Date[][];
+    birthday: Date;
+
+    constructor(private datepicker: DatepickerService) {}
 
     ngOnInit() {
-        this.today = Date.now();
+        const date: Date = new Date();
+
+        this.today = new Date(Date.now());
+        this.month = this.datepicker.getDays(new Date(date.getFullYear(), date.getMonth(), 1), date.getMonth());
     }
 
 }

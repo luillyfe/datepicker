@@ -1,58 +1,26 @@
 <div class="container mt-5">
-    <div class="list-group">
+    <div class="input-group mb-3 d-none d-md-inline-flex">
+        <div class="input-group-prepend rounded-left">
+            <span class="input-group-text" type="date" id="mail-addon">@</span>
+        </div>
+        <input type="text" class="form-control" placeholder="the day you were born" aria-label="Birthday" aria-describedby="the-day-you-were-born"
+            [value]="birthday | date">
+    </div>
+    <div class="list-group d-md-none">
       <a href="#" class="list-group-item list-group-item-action text-center active">{{ today | date:'MM/dd/y' }}</a>
       <a href="#" class="list-group-item list-group-item-action text-center">{{ today | date:'MMMM' }}</a>
     </div>
-    <div class="table-responsive">
-        <!-- TODO: td content should be generate -->
+    <div class="table-responsive d-md-none">
         <table class="table">
-          <tbody>
-          <tr>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
-            <td>31</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>18</td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-          </tr>
-          <tr>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
-          </tr>
-          </tbody>
+            <tbody>
+                <tr *ngFor="let week of month">
+                    <!-- TODO: On expession for table-disable class should be 0 calculate -->
+                    <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != 0">
+                        <button [disabled]="day.getMonth() != 0" [value]="day" (click)="birthday = day">
+                          {{ day | date:'dd' }}</button>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>

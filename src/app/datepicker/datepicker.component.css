@@ -8,20 +8,38 @@
     margin-right: 65px;
 }
 
-.table td {
-    padding: .75rem .5rem;
-}
-
 .table {
     border-bottom: 20px solid;
     border-color: #007bff;
 }
 
-/*.table-responsive::after {
-    content: "";
-    border: 1px solid;
-    !* TODO: Width should be calculate at runtime *!
-    border-right-width: 20vh;
-    border-left-width: 20vh;
-    border-color: #007bff;
-}*/
+.table td {
+    padding: 0;
+    text-align: center;
+}
+
+.table-disable {
+    background-color: #e5f1ff;
+}
+
+.input-group-prepend {
+    background-color: #007bff;
+}
+
+.input-group-prepend span {
+    color: #f8f9fa;
+    position: relative;
+    top: 17%;
+}
+
+button {
+    padding: .75rem .5rem;
+    border-width: 0;
+    background-color: transparent;
+}
+
+button:focus {
+    background-color: #007bff;
+    color: white;
+}
+

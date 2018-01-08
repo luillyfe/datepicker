@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import {DatepickerService} from './datepicker/datepicker.service';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+      DatepickerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
