@@ -10,7 +10,7 @@ export class DatepickerComponent implements OnInit {
     today: Date;
     month: Date[][];
     birthday: Date;
-    hiddenSelector = false;
+    hiddenDateSelector = false;
 
     constructor(private datepicker: DatepickerService) {}
 
@@ -21,9 +21,8 @@ export class DatepickerComponent implements OnInit {
         this.month = this.datepicker.getDays(new Date(date.getFullYear(), date.getMonth(), 1), date.getMonth());
     }
 
-    onClick(day: Date) {
-        this.birthday = day;
-        this.hiddenSelector = true;
+    showOff() {
+        this.hiddenDateSelector = true;
     }
 
 }
