@@ -17,8 +17,8 @@
             <table class="table">
                 <tbody>
                     <tr *ngFor="let week of month">
-                        <td *ngFor="let day of week" [class.table-disable]="day.getMonth() != birthday.getMonth()">
-                            <button [disabled]="day.getMonth() != birthday.getMonth()" [value]="day" (click)="datePicker(day)">
+                        <td *ngFor="let day of week" [class.table-disable]="unableDays(day)">
+                            <button [disabled]="unableDays(day)" [value]="day" (click)="datePicker(day)">
                               {{ day | date:'dd' }}</button>
                         </td>
                     </tr>

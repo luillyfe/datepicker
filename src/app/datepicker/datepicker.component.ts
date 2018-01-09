@@ -49,4 +49,9 @@ export class DatepickerComponent implements OnInit {
         this.month = this.datepicker.getDays(new Date(this.birthday.getFullYear(), 0, 1), 0);
     }
 
+    unableDays(day: Date) {
+        const lastDay = new Date();
+        return day.getMonth() !== this.birthday.getMonth() || day > lastDay;
+    }
+
 }
