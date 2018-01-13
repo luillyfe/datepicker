@@ -11,6 +11,7 @@ export class DatepickerComponent implements OnInit {
     year: Date[];
     years: Date[];
     birthday: Date;
+
     hiddenDateSelector = true;
     hiddenMonthSelector = true;
     hiddenYearSelector = true;

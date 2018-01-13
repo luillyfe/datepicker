@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import {DatepickerService} from './datepicker/datepicker.service';
+// import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {DatepickerService} from './datepicker/datepicker.service';
   providers: [
       DatepickerService
   ],
+  exports: [ DatepickerComponent ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class DatepickerModule { }

@@ -29,9 +29,9 @@
 </div>
 
 <ul class="month-picker list-group" [class.d-none]="hiddenMonthSelector">
-  <li class="list-group-item" *ngFor="let month of year" (click)="monthPicker(month)">{{ month | date:'MMMM' }}</li>
+    <li class="list-group-item" *ngFor="let month of year" (click)="monthPicker(month)">{{ month | date:'MMMM' }}</li>
 </ul>
 
 <ul class="month-picker list-group" [class.d-none]="hiddenYearSelector">
-  <li class="list-group-item" *ngFor="let year of years" (click)="yearPicker(year)">{{ year | date:'yyyy' }}</li>
+    <li class="list-group-item" *ngFor="let year of years" (click)="yearPicker(year)">{{ year | date:'yyyy' }}</li>
 </ul>
