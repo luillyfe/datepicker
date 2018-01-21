@@ -53,15 +53,11 @@ describe('DatepickerComponent', () => {
         let birthdayDe;
 
         beforeEach(async(() => {
-            fixture.detectChanges();
-            component.ngOnInit();
             birthdayDe = fixture.debugElement.query(By.css('.date-picker .form-control'));
-            fixture.detectChanges();
         }));
 
         it('date-selector should be displayed (Birthday input is still displayed)', () => {
             birthdayDe.triggerEventHandler('click', null);
-            fixture.detectChanges();
 
             expect(component.hiddenDatePicker).toBeFalsy();
             expect(component.hiddenDateSelector).toBeFalsy();
@@ -69,7 +65,7 @@ describe('DatepickerComponent', () => {
             expect(component.hiddenYearSelector).toBeTruthy();
         });
 
-        xit('date-selector should be displayed', async(() => {
+        xit('the user can select a date', async(() => {
             birthdayDe.nativeElement.click()
             fixture.detectChanges();
             let tableDe;
@@ -83,5 +79,42 @@ describe('DatepickerComponent', () => {
             console.log(tableDe);
             expect(component.hiddenDatePicker).toBeFalsy();
         }));
+    });
+
+    describe('When a user selects the month selector', () => {
+        beforeEach(() => {
+            component.monthSelector();
+        });
+
+        it('month-selector must be the only one selected', () => {
+            expect(component.hiddenYearSelector).toBeTruthy();
+            expect(component.hiddenMonthSelector).toBeFalsy();
+            expect(component.unable).toBeTruthy();
+        });
+    });
+
+    describe('When a user selects the year selector', () => {
+      beforeEach(() => {
+        component.yearSelector();
+      });
+
+      it('year-selector must be the only one selected', () => {
+        expect(component.hiddenYearSelector).toBeFalsy();
+        expect(component.hiddenMonthSelector).toBeTruthy();
+        expect(component.unable).toBeTruthy();
+      });
+    });
+
+    describe('When a user picks a month', () => {
+      let month: Date;
+      beforeEach(() => {
+          month = new Date('Sun Apr 01 2018 00:00:00 GMT-0500 (COT)');
+          component.monthSelector();
+          component.monthPicker(month);
+      });
+
+      it('year-selector must be update with the month selected', () => {
+          expect(component.birthday).toEqual(month);
+      });
     });
 });
