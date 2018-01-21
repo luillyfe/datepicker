@@ -1,4 +1,4 @@
-<div class="date-picker container mt-5" [class.d-none]="hiddenDatePicker">
+<div class="date-picker container mt-5" [ngClass]="{'d-none': hiddenDatePicker, 'unable': unable}">
     <div class="date-input input-group mb-3">
         <div class="input-group-prepend rounded-left">
             <span class="input-group-text" type="date" id="mail-addon">@</span>
@@ -9,9 +9,9 @@
     <div class="date-selector" [class.invisible]="hiddenDateSelector">
         <div class="list-group">
           <button class="list-group-item list-group-item-action text-center active"
-              (click)="hiddenYearSelector = false">{{ birthday | date:'yyyy' }}</button>
+              (click)="yearSelector()">{{ birthday | date:'yyyy' }}</button>
           <button class="list-group-item list-group-item-action text-center"
-              (click)="hiddenMonthSelector = false">{{ birthday | date:'MMMM' }}</button>
+              (click)="monthSelector()">{{ birthday | date:'MMMM' }}</button>
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -28,10 +28,10 @@
     </div>
 </div>
 
-<ul class="month-picker list-group" [class.d-none]="hiddenMonthSelector">
+<ul class="month-picker list-group" [ngClass]="{'d-none': hiddenMonthSelector, 'unable': hiddenMonthSelector}">
     <li class="list-group-item" *ngFor="let month of year" (click)="monthPicker(month)">{{ month | date:'MMMM' }}</li>
 </ul>
 
-<ul class="month-picker list-group" [class.d-none]="hiddenYearSelector">
+<ul class="month-picker list-group" [ngClass]="{'d-none': hiddenYearSelector, 'unable': hiddenYearSelector}">
     <li class="list-group-item" *ngFor="let year of years" (click)="yearPicker(year)">{{ year | date:'yyyy' }}</li>
 </ul>
