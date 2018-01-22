@@ -61,7 +61,14 @@
     top: 10%;
     left: calc(50% - 62px);
 
+    max-height: 500px;
+    overflow: scroll;
+
     min-width: 125px;
+}
+
+.month-picker .list-group-item:hover, .year-picker .list-group-item:hover {
+    background-color: aliceblue;
 }
 
 .month-picker {
@@ -70,4 +77,9 @@
 
 .year-picker {
     z-index: 3;
+}
+
+.unable {
+    opacity: 0.33;
+    pointer-events: none;
 }

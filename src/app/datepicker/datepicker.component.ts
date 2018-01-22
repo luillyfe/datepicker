@@ -17,6 +17,8 @@ export class DatepickerComponent implements OnInit {
     hiddenYearSelector = true;
     hiddenDatePicker = false;
 
+    unable = false;
+
     constructor(private datepicker: DatepickerService) {}
 
     ngOnInit() {
@@ -39,6 +41,8 @@ export class DatepickerComponent implements OnInit {
 
         this.birthday = month;
         this.month = this.datepicker.getDays(new Date(this.birthday.getFullYear(), this.birthday.getMonth(), 1), this.birthday.getMonth());
+
+        this.unable = false;
     }
 
     yearPicker(year: Date) {
@@ -48,11 +52,23 @@ export class DatepickerComponent implements OnInit {
         this.birthday = year;
         this.year = this.datepicker.getMonths(year.getFullYear());
         this.month = this.datepicker.getDays(new Date(this.birthday.getFullYear(), 0, 1), 0);
+
+        this.unable = false;
     }
 
     unableDays(day: Date) {
         const lastDay = new Date();
         return day.getMonth() !== this.birthday.getMonth() || day > lastDay;
+    }
+
+    monthSelector() {
+        this.hiddenMonthSelector = false;
+        this.unable = true;
+    }
+
+    yearSelector() {
+        this.hiddenYearSelector = false;
+        this.unable = true;
     }
 
 }
