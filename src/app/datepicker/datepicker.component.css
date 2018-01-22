@@ -61,6 +61,9 @@
     top: 10%;
     left: calc(50% - 62px);
 
+    max-height: 500px;
+    overflow: scroll;
+
     min-width: 125px;
 }
 
