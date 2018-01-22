@@ -67,6 +67,10 @@
     min-width: 125px;
 }
 
+.month-picker .list-group-item:hover, .year-picker .list-group-item:hover {
+    background-color: aliceblue;
+}
+
 .month-picker {
     z-index: 2;
 }
